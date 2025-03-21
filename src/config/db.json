@@ -1,0 +1,36 @@
+{
+  "roomDetail": [
+    {
+      "id": "d89a",
+      "name": "kirti sapriya",
+      "email": "kirtisapriya@gmail.com",
+      "roomno": "4",
+      "chackin": "2025-03-25",
+      "chackout": "2025-03-20"
+    },
+    {
+      "id": "418e",
+      "name": "kirti sapriya",
+      "email": "kirtisapriya@gmail.com",
+      "roomno": "4",
+      "chackin": "2025-03-26",
+      "chackout": "2025-03-14"
+    },
+    {
+      "id": "f1a0",
+      "name": "kirti sapriya",
+      "email": "kirtisapriya@gmail.com",
+      "roomno": "4",
+      "chackin": "2025-03-19",
+      "chackout": "2025-03-05"
+    },
+    {
+      "id": "1587",
+      "name": "as",
+      "email": "asa",
+      "roomno": "aas",
+      "chackin": "",
+      "chackout": "2025-03-05"
+    }
+  ]
+}

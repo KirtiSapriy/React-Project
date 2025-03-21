@@ -1,36 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Deletdata } from '../Slice/Slice'
+import { DeleteData, GetRoomData, setid } from '../Slice/Slice'
+import { useNavigate } from 'react-router-dom'
 
 export default function RoomDetail() {
 
-  // const [data, setdata] = useState(null)
-  const dis = useDispatch()
-  let roomdata = useSelector((state) => {
-    return state.json.roomdetail
+  const dispacth = useDispatch()
+  const naviget = useNavigate()
+  useEffect(() => {
+    dispacth(GetRoomData())
+  }, [dispacth])
+  const data = useSelector((state) => {
+    return state.json
   })
-  console.log(roomdata);
+
+  const edit = (id) => {
+    dispacth(setid(id))
+    naviget('/Roombook')
+  }
 
   return (
-    <div>
-      <table>
-        {roomdata && roomdata.map((el, i) => {
-          return (
-            <div key={el.id}>
-              <tr>
+    <div><center>
+      <h1>RoomDetail</h1>
+
+      <div>
+        <table border={1}>
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>email</td>
+              <td>room no</td>
+              <td>Chackin</td>
+              <td>Chakout</td>
+              <td colSpan={2}>Actio</td>
+
+            </tr>
+
+          </thead>
+          <tbody>
+            {data.roomdetail && data.roomdetail.map((el) => {
+              return <tr key={el.id}>
                 <td>{el.name}</td>
                 <td>{el.email}</td>
                 <td>{el.roomno}</td>
                 <td>{el.chackin}</td>
                 <td>{el.chackout}</td>
-                <td><button>Edit</button></td>
-                <td><button onClick={() => { dis(Deletdata(el.id)) }}>Delete</button></td>
+                <td><button onClick={() => edit(el.id)}>Edit</button></td>
+                <td><button onClick={() => dispacth(DeleteData(el.id))}>Delete</button></td>
               </tr>
-            </div>
-          )
-        })}
-      </table>
+            })}
 
+          </tbody>
+        </table>
+      </div></center>
     </div>
   )
 }

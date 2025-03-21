@@ -18,10 +18,11 @@ function App() {
           <Route path='/' element={<RoomList />}></Route>
           <Route path='/Detail' element={<RoomDetail />}></Route>
           <Route path='/Roombook' element={<RoomBook />}></Route>
+
         </Routes>
       </Provider>
     </>
-    )
+  )
 }
 
 export default App

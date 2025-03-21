@@ -16,12 +16,12 @@ export const GetRoomData = createAsyncThunk("GetRoomData", async () => {
     return res
 })
 // 
-// export const Deletdata = createAsyncThunk("Deletdata", async (id) => {
+export const Deletdata = createAsyncThunk("Deletdata", async (id) => {
 
-//     await axios.delete(`${JsonLink}/${id}`)
-//     return id
+    await axios.delete(`${JsonLink}/${id}`)
+    return id
 
-// })
+})
 
 export const Slcie = createSlice({
     name: "Hotel Manegment",
@@ -32,18 +32,16 @@ export const Slcie = createSlice({
         builder.addCase(GetRoomData.fulfilled, (state, action) => {
             state.roomdetail = action.payload
         })
-        builder.addCase(GetRoomData.pending, (state, action) => {
-            // state.roomdetail.push(action.payload)
-        })
+
         builder.addCase(AddRoomBook.fulfilled, (state, action) => {
             state.roomdetail.push(action.payload)
         })
 
-        // builder.addCase(Deletdata.fulfilled, (state, action) => {
+        builder.addCase(Deletdata.fulfilled, (state, action) => {
 
-        //     let data = state.roomdetail.filter((el) => el.is != action.payload)
-        //     state.roomdetail = data
-        // })
+            let data = state.roomdetail.filter((el) => el.is != action.payload)
+            state.roomdetail = data
+        })
     })
 })
 
